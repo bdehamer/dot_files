@@ -94,4 +94,4 @@ nnoremap <leader>w <C-w>s<C-w>k
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 
-let g:CommandTAcceptSelectionSplitMap='<C-CR>'
+"let g:CommandTAcceptSelectionSplitMap='<C-CR>'
