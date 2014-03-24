@@ -1,0 +1,97 @@
+call pathogen#infect()
+call pathogen#helptags()
+
+set nocompatible
+
+syntax enable                     "Turn on syntax highlighting
+filetype plugin indent on         "Turn on file type detection
+
+set laststatus=2                  "Enables the status line at the bottom of Vim
+set statusline=%{GitBranchInfoString()}%=%t%m\ [%c,%l]
+
+set showcmd                       "Display incomplete commands
+set showmode                      "Display the mode we're in
+
+set backspace=indent,eol,start    "Intuitive backspacing
+
+set hidden                        "Handle multiple buffers better
+
+set wildmenu                      "Enhanced command line completion
+set wildmode=list:longest         "Complete files like a shell
+
+set ignorecase                    "Case-insensitive searching
+set smartcase                     "But case-sensitive if using cap letter
+
+set number                        "Show line numbers
+set ruler                         "Show cursor position
+
+set incsearch                     "Highlight matches as you type
+set hlsearch                      "Highlight matches
+
+set wrap                          "Turn on line wrapping
+set scrolloff=3                   "Show 3 lines of context around cursor
+
+set title                         "Set terminal title
+
+set visualbell                    "No beeping
+
+set nobackup                      "Don't make file backups
+set nowritebackup                 "Ditto
+set directory=$HOME/.vim/tmp//,.  "Keep swap files in one location
+
+set tabstop=2                     "Global tab width
+set hardtabs=2
+set shiftwidth=2                  "Shift width
+set expandtab                     "Use spaces instead of tabs
+
+autocmd Filetype python setlocal ts=4 sts=4 sw=4
+
+hi Search guibg=Yellow guifg=Black ctermbg=Yellow ctermfg=Black
+hi PMenuSel ctermbg=Yellow ctermfg=Black
+
+set pastetoggle=<F3>
+
+" Toggle line numbers
+nnoremap <F2> :set nonumber!<CR>
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·
+
+"Make semicolon equiv of colon in normal mode
+"nnoremap ; :
+
+"Enter normal mode with jj
+inoremap jj <Esc>
+
+"Change leader key
+let mapleader=","
+
+"Toggle NERDTree
+nnoremap <leader>n :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$']
+
+"Ack
+"nnoremap <leader>a :Ack<space>
+"let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
+" Map CtrlP to leader-f
+"nnoremap <leader>f :CtrlP<CR>
+
+"Leader-Space to clear search highlighting
+nnoremap <leader><space> :noh<CR>
+
+"Use tab for bracket matching
+nnoremap <tab> %
+vnoremap <tab> %
+
+"Strip all trailing whitespace
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+"Horizontal split
+nnoremap <leader>w <C-w>s<C-w>k
+
+"Navigate splits
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+
+let g:CommandTAcceptSelectionSplitMap='<C-CR>'

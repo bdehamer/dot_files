@@ -1,0 +1,20 @@
+[user]
+  name = Brian DeHamer
+  email = brian.dehamer@hp.com
+[core]
+  editor = vi
+[alias]
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  dif = diff --color
+  pl = pull
+  ps = push
+  m = commit -v
+  s = status
+  c = checkout
+  d = diff --color
+  dc = diff --cached --color
+  a = add
+  b = branch 
+[push]
+	default = current
