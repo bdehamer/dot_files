@@ -1,6 +1,6 @@
 [user]
   name = Brian DeHamer
-  email = brian.dehamer@hp.com
+  email = brian.dehamer@savvis.com
 [core]
   editor = vi
 [alias]
@@ -15,6 +15,7 @@
   d = diff --color
   dc = diff --cached --color
   a = add
-  b = branch 
+  b = branch
+  up = "!git remote update -p; git merge --ff-only @{u}"
 [push]
-	default = current
+  default = current
