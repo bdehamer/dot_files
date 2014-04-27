@@ -46,7 +46,7 @@ set hlsearch                      "Highlight matches
 set showmatch                     "Briefly jump cursor to matching brace
 
 set wrap                          "Turn on line wrapping
-set colorcolumn=81                "Show column marker
+"set colorcolumn=81                "Show column marker
 
 set nobackup                      "Don't make file backups
 set nowritebackup                 "Ditto
@@ -100,8 +100,6 @@ nnoremap <leader>v V`]
 nnoremap <leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 
-"Ack
-"nnoremap <leader>a :Ack<space>
 "let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 " Map CtrlP to leader-f
@@ -113,10 +111,18 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 "Horizontal split
 nnoremap <leader>w <C-w>s<C-w>k
 
-"let g:CommandTAcceptSelectionSplitMap='<C-CR>'
+"Ack
+nnoremap <leader>a :Ack!<space>
+let g:ackprg="ack -H --nocolor --nogroup --column"
+"O   to open and close quickfix window
+"h   to open in horizontal split
+"v   to open in vertical split
+"q   to close quickfix window
 
 "NerdCommenter
 "<leader>c<space>  toggle comment
 
 "PeepOpen
 "<leader>p   open peepopen
+"
+"let g:CommandTAcceptSelectionSplitMap='<C-CR>'
