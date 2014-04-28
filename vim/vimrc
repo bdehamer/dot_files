@@ -8,13 +8,18 @@ set modelines=0                   "What does this do?
 
 " Status Bar
 set laststatus=2                  "Enables the status line at the bottom of Vim
-"set statusline=%{GitBranchInfoString()}%=%t%m\ [%c,%l]
-set statusline=[%n]\ %f\ %m\ %y
-set statusline+=%w
+set statusline=%{GitBranchInfoString()}
+set statusline+=\ %t%m
 set statusline+=%=
 set statusline+=%c,
 set statusline+=%l/%L
-set statusline+=\ %P
+let g:git_branch_status_head_current=1
+let g:git_branch_status_text=""
+if version >= 700
+    highlight statusLine cterm=bold ctermfg=black ctermbg=gray guibg=black guifg=gray
+    au InsertLeave * highlight StatusLine cterm=bold ctermfg=black ctermbg=gray guifg=black guibg=gray
+    au InsertEnter * highlight StatusLine cterm=bold ctermfg=black ctermbg=blue guifg=black guibg=cyan
+endif
 
 set tabstop=2                     "Global tab width
 set shiftwidth=2                  "Shift width
