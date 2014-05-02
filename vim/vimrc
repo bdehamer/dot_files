@@ -89,6 +89,11 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+if bufwinnr(1)
+  map + <C-W>+
+  map - <C-W>-
+endif
+
 "Make semicolon equiv of colon in normal mode
 "nnoremap ; :
 
