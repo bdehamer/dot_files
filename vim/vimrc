@@ -68,6 +68,11 @@ autocmd Filetype python setlocal ts=4 sts=4 sw=4
 hi Search guibg=Yellow guifg=Black ctermbg=Yellow ctermfg=Black
 hi PMenuSel ctermbg=Yellow ctermfg=Black
 
+" Load matchit.vim, but only if the we haven't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
 "Function keys
 " Toggle line numbers
 nnoremap <F2> :set nonumber!<CR>
@@ -115,8 +120,6 @@ nnoremap <leader>v V`]
 nnoremap <leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 
-"let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-
 " Map CtrlP to leader-f
 "nnoremap <leader>f :CtrlP<CR>
 
@@ -138,3 +141,4 @@ let g:ackprg="ack -H --nocolor --nogroup --column"
 "<leader>c<space>  toggle comment
 
 "let g:CommandTAcceptSelectionSplitMap='<C-CR>'
+
