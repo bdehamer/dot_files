@@ -68,16 +68,21 @@ autocmd Filetype python setlocal ts=4 sts=4 sw=4
 hi Search guibg=Yellow guifg=Black ctermbg=Yellow ctermfg=Black
 hi PMenuSel ctermbg=Yellow ctermfg=Black
 
+"Function keys
+" Toggle line numbers
+nnoremap <F2> :set nonumber!<CR>
 set pastetoggle=<F3>
+nnoremap <F4> :GitGutterToggle<CR>
+
+"Make gitgutter aggressive
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
 
 "Fix vim regex handling
 vnoremap / /\v
 
 "Enter normal mode with jj
 inoremap jj <Esc>
-
-" Toggle line numbers
-nnoremap <F2> :set nonumber!<CR>
 
 "Use tab for matching bracket pairs
 nnoremap <tab> %
@@ -132,7 +137,4 @@ let g:ackprg="ack -H --nocolor --nogroup --column"
 "NerdCommenter
 "<leader>c<space>  toggle comment
 
-"PeepOpen
-"<leader>p   open peepopen
-"
 "let g:CommandTAcceptSelectionSplitMap='<C-CR>'
