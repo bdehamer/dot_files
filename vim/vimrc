@@ -139,6 +139,9 @@ let g:ackprg="ack -H --nocolor --nogroup --column"
 
 "NerdCommenter
 "<leader>c<space>  toggle comment
+"
+"Blockle
+"<leader>b  toggle between { } and do end
 
 "let g:CommandTAcceptSelectionSplitMap='<C-CR>'
 
