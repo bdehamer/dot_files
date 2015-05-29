@@ -59,8 +59,9 @@ set directory=$HOME/.vim-tmp/,~/tmp,/var/tmp,/tmp
 set backupdir=$HOME/.vim-tmp/,~/tmp,/var/tmp,/tmp
 
 " Display extra whitespace
-set list
-set listchars=tab:»·,trail:·
+"set list
+" set listchars=tab:»·,trail:·
+"set listchars=tab: ,trail:·
 
 syntax enable                     "Turn on syntax highlighting
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
@@ -76,7 +77,6 @@ endif
 "Function keys
 " Toggle line numbers
 nnoremap <F2> :set nonumber!<CR>
-set pastetoggle=<F3>
 nnoremap <F4> :GitGutterToggle<CR>
 
 "Make gitgutter aggressive
@@ -110,11 +110,24 @@ endif
 "Change leader key
 let mapleader=","
 
+" Toggle paste mode
+set pastetoggle=<leader>z
+
 "Leader-Space to clear search highlighting
 nnoremap <leader><space> :noh<CR>
 
 "Reselect text just pasted
 nnoremap <leader>v V`]
+
+" Clone paragraph
+noremap cp yap<S-}>p
+
+" Quit file
+noremap <leader>q :q<cr>
+
+" Save file
+nnoremap <leader>s :w<cr>
+inoremap <leader>s <C-c>:w<cr>
 
 "Toggle NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
