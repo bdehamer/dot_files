@@ -5,6 +5,8 @@ fi
 
 # Requires that you brew install git
 source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+__git_complete gc _git_checkout
+__git_complete gb _git_branch
 
 eval "$(rbenv init -)"
 

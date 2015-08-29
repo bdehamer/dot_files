@@ -1,11 +1,19 @@
 set -o vi
 
-if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
-  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
-fi
+export DOCKER_HOST=tcp://127.0.0.1:2375
 
-if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
-  . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
+if type "brew" > /dev/null 2>&1; then
+  if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+    . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+  fi
+
+  if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
+    . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
+  fi
+
+  if [ -f `brew --prefix`/etc/bash_completion.d/docker ]; then
+    . `brew --prefix`/etc/bash_completion.d/docker
+  fi
 fi
 
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -19,3 +27,8 @@ fi
 
 export PYTHONSTARTUP="$HOME/dev/python-shell-enhancement/pythonstartup.py"
 export PYTHON_HISTORY_FILE="$HOME/.pythonhistory"
+
+function tit() { echo -n -e "\033]0;$@\007"; }
+if type "direnv" > /dev/null 2>&1; then
+  eval "$(direnv hook $0)"
+fi

@@ -1,8 +1,9 @@
 [user]
-  name = Brian DeHamer
-  email = brian.dehamer@centurylink.com
+	name = Brian DeHamer
+	email = brian@dehamer.com
 [core]
   editor = vi
+	excludesfile = /Users/bdehamer/.gitignore_global
 [alias]
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
@@ -19,3 +20,9 @@
   up = "!git remote update -p; git merge --ff-only @{u}"
 [push]
   default = current
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
