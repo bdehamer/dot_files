@@ -1,8 +1,12 @@
 set -o vi
+export EDITOR=vim
 
-export DOCKER_HOST=tcp://127.0.0.1:2375
-
+# bash completions
 if type "brew" > /dev/null 2>&1; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+
   if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
     . `brew --prefix`/etc/bash_completion.d/git-completion.bash
   fi
@@ -11,24 +15,40 @@ if type "brew" > /dev/null 2>&1; then
     . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
   fi
 
-  if [ -f `brew --prefix`/etc/bash_completion.d/docker ]; then
-    . `brew --prefix`/etc/bash_completion.d/docker
-  fi
+  __git_complete gc _git_checkout
+  __git_complete gb _git_branch
 fi
 
+# prompt stuff
 GIT_PS1_SHOWDIRTYSTATE=true
 
-#export PS1='\h:\W \u\$ '
-export PS1='\h:\W$(__git_ps1 "(%s)") \$ '
+# Prompt char for user or root
+_prompt_char() {
+  local char=➔
+  [ "$UID" == 0 ] && char=\$
+  printf "$char"
+}
 
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
+export PS1='\W$(__git_ps1 "(%s)") $(_prompt_char) '
+
+# chruby setup
+if [[ -e /usr/local/share/chruby ]]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
 fi
 
-export PYTHONSTARTUP="$HOME/dev/python-shell-enhancement/pythonstartup.py"
-export PYTHON_HISTORY_FILE="$HOME/.pythonhistory"
-
-function tit() { echo -n -e "\033]0;$@\007"; }
+# direnv setup
 if type "direnv" > /dev/null 2>&1; then
   eval "$(direnv hook $0)"
+fi
+
+# nvm setup
+export NVM_DIR=~/.nvm
+if [ -f `brew --prefix nvm`/nvm.sh ]; then
+  . $(brew --prefix nvm)/nvm.sh
+fi
+
+# aliases and functions
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
 fi

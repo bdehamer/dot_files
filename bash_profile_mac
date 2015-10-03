@@ -1,13 +1,1 @@
-# Make sure you brew install bash-completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-   source $(brew --prefix)/etc/bash_completion
-fi
-
-# Requires that you brew install git
-source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
-__git_complete gc _git_checkout
-__git_complete gb _git_branch
-
-eval "$(rbenv init -)"
-
 [[ -s ~/.bashrc ]] && source ~/.bashrc
