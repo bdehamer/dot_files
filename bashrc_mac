@@ -1,23 +1,16 @@
 set -o vi
-export EDITOR=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # bash completions
-if type "brew" > /dev/null 2>&1; then
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-  fi
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-  if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
-    . `brew --prefix`/etc/bash_completion.d/git-completion.bash
-  fi
-
-  if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
-    . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
-  fi
-
-  __git_complete gc _git_checkout
-  __git_complete gb _git_branch
+if [ -f $HOME/.asdf/completions/asdf.bash ]; then 
+  . $HOME/.asdf/completions/asdf.bash
 fi
+
+__git_complete gc _git_checkout
+__git_complete gb _git_branch
 
 # prompt stuff
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -31,24 +24,23 @@ _prompt_char() {
 
 export PS1='\W$(__git_ps1 "(%s)") $(_prompt_char) '
 
-# chruby setup
-if [[ -e /usr/local/share/chruby ]]; then
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-fi
+export PATH=$HOME/.bin:$(brew --prefix mysql@5.6)/bin:$PATH
 
-# direnv setup
-if type "direnv" > /dev/null 2>&1; then
-  eval "$(direnv hook $0)"
-fi
+# asdf setup
+. $(brew --prefix asdf)/asdf.sh
 
-# nvm setup
-export NVM_DIR=~/.nvm
-if [ -f `brew --prefix nvm`/nvm.sh ]; then
-  . $(brew --prefix nvm)/nvm.sh
+# awsam 
+if [ -s $HOME/.awsam/bash.rc ]; then
+  source $HOME/.awsam/bash.rc
 fi
 
 # aliases and functions
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
+
+export GITHUB_TOKEN="$(get_pw GITHUB_TOKEN)"
+
+#export FZF_DEFAULT_COMMAND='rg --files'
+#export FZF_DEFAULT_COMMAND='git ls-files'
+#[ -f ~/.fzf.bash ] && source ~/.fzf.bash

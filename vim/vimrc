@@ -3,16 +3,19 @@ call pathogen#helptags()
 
 filetype plugin indent on         "Turn on file type detection
 
+"colorscheme railscasts
+
 set nocompatible                  "Turn off vi compatibility
 set modelines=0                   "What does this do?
 
 " Status Bar
 set laststatus=2                  "Enables the status line at the bottom of Vim
-set statusline=%{GitBranchInfoString()}
+set statusline=                   "%{GitBranchInfoString()}
 set statusline+=\ %t%m
 set statusline+=%=
 set statusline+=%c,
 set statusline+=%l/%L
+set statusline+=\  " set ending space
 let g:git_branch_status_head_current=1
 let g:git_branch_status_text=""
 if version >= 700
@@ -87,7 +90,7 @@ let g:gitgutter_eager = 1
 vnoremap / /\v
 
 "Enter normal mode with jj
-inoremap jj <Esc>
+"inoremap jj <Esc>
 
 "Use tab for matching bracket pairs
 nnoremap <tab> %
@@ -134,7 +137,7 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 
 " Map CtrlP to leader-f
-"nnoremap <leader>f :CtrlP<CR>
+nnoremap <leader>f :CtrlP<CR>
 
 "Strip all trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -144,7 +147,8 @@ nnoremap <leader>w <C-w>s<C-w>k
 
 "Ack
 nnoremap <leader>a :Ack!<space>
-let g:ackprg="ack -H --nocolor --nogroup --column"
+"let g:ackprg="ack -H --nocolor --nogroup --column"
+"let g:ackprg = 'ag --nogroup --nocolor --column'
 "O   to open and close quickfix window
 "h   to open in horizontal split
 "v   to open in vertical split
@@ -158,3 +162,8 @@ let g:ackprg="ack -H --nocolor --nogroup --column"
 
 "let g:CommandTAcceptSelectionSplitMap='<C-CR>'
 
+"fzf
+"set rtp+=/usr/local/opt/fzf
+
+" Colors
+highlight Pmenu ctermbg=238

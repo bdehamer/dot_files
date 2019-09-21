@@ -28,3 +28,48 @@
 [submodule "vim/bundle/vim-blockle"]
 	path = vim/bundle/vim-blockle
 	url = https://github.com/jgdavey/vim-blockle.git
+[submodule "vim/bundle/vim-coffee-script"]
+	path = vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "nvim/pack/bundle/start/ale"]
+	path = nvim/pack/bundle/start/ale
+	url = https://github.com/w0rp/ale.git
+[submodule "nvim/pack/bundle/start/fzf"]
+	path = nvim/pack/bundle/start/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "nvim/pack/bundle/start/neoformat"]
+	path = nvim/pack/bundle/start/neoformat
+	url = https://github.com/sbdchd/neoformat.git
+[submodule "nvim/pack/bundle/start/nerdcommenter"]
+	path = nvim/pack/bundle/start/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "nvim/pack/bundle/start/nerdtree"]
+	path = nvim/pack/bundle/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "nvim/pack/bundle/start/supertab"]
+	path = nvim/pack/bundle/start/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "nvim/pack/bundle/start/vim-blockle"]
+	path = nvim/pack/bundle/start/vim-blockle
+	url = git://github.com/jgdavey/vim-blockle.git
+[submodule "nvim/pack/bundle/start/vim-endwise"]
+	path = nvim/pack/bundle/start/vim-endwise
+	url = git://github.com/tpope/vim-endwise.git
+[submodule "nvim/pack/bundle/start/vim-gitgutter"]
+	path = nvim/pack/bundle/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "nvim/pack/bundle/start/vim-polyglot"]
+	path = nvim/pack/bundle/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "nvim/pack/bundle/start/vim-surround"]
+	path = nvim/pack/bundle/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "nvim/pack/bundle/start/vim-test"]
+	path = nvim/pack/bundle/start/vim-test
+	url = https://github.com/janko-m/vim-test.git
